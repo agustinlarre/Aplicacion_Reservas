@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Obligatorio Programación</title>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    
+    <!--PAGINA INICIO LOCAL Y USUARIOS-->
+      <div id="paginaInicial">
+        <fieldset>
+          <h1 id="tituloPrincipal">Aplicación de reservas:</h1>
+          <img
+            src="imagenes/Reservapp.jpg"
+            alt="Logo"
+            id="imagenLogo"
+            width="120"
+            height="110"
+          />
+          <p>
+            Ingrese como usuario o empresa para gestionar reservas a locales de
+            entretenimiento varios con simples pasos. La aplicación ofrece el
+            servicio sin compromiso de seña.
+          </p>
+          <h2><strong>Ingrese como local:</strong></h2>
+          <input
+            type="button"
+            value="Ingresar local"
+            id="btnIngresoLocal"
+          /><br />
+          <h2><strong>Ingrese como usuario:</strong></h2>
+          <input type="button" value="Ingresar usuario" id="btnIngresoUs" /><br />
+        </fieldset>
+      </div>
+  
+      <!--INGRESO LOCAL-->
+      <div id="ingresoLocal">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Ingreso Locales:</h2>
+            <br />
+  
+            <label for="txtUsernameLocal"
+              ><strong>Nombre de Usuario:</strong></label
+            >
+            <input
+              type="text"
+              id="txtUsernameLocal"
+              placeholder="Ingresar nombre de usuario"
+            /><br /><br />
+  
+            <label for="txtPasswordUsernameLocal"
+              ><strong>Contraseña:</strong></label
+            >
+            <input
+              type="password"
+              id="txtPasswordUsernameLocal"
+              placeholder="Ingresar contraseña"
+            />
+            <p id="mensajeErrorInicioLocal" style="color: red;"></p>
+            <input
+              type="button"
+              id="loginUsernameLocal"
+              value="Ingresar"
+            /><br /><br />
+            <input
+              type="button"
+              value="Volver a página de inicio"
+              id="botonVolverLocal"
+            />
+            <br /><br />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--PAGINA INICIO LOCAL-->
+      <div id="inicioLocal">
+        <fieldset>
+          <h2 id="tituloInicioLocal">Bienvenido <span id="localName"></span></h2>
+          <img alt="Foto del local" id="fotosLocales" width="175" height="175">
+          <p><strong> Numero de identificación: </strong><span id="numeroIdentificacionLocal"></span></p>
+          <p><strong>Nombre: </strong><span id="nombreInicioLocal"></span></p>
+          <p><strong>Tipo: </strong><span id="tipoInicioLocal"></span></p>
+          <p><strong>Direccion: </strong><span id="direccionInicioLocal"></span></p>
+          <p><strong>Cupo máximo: </strong><span id="cupoMaximoInicioLocal"></span></p>
+          <p style="display: inline">
+            <strong>Estado: </strong><br/><br/>
+            <input type="radio" id="estadoDisponible" name="disponibilidad" value="Disponible">
+            <label for="estadoDisponible"> Disponible</label><br/><br/>
+            <input type="radio" id="estadoNoDisponible" name="disponibilidad">
+            <label for="estadoNoDisponible"> No disponible</label>
+            <br/><br/>
+          <input
+            type="button"
+            value="Cambiar Estado"
+            id="cambiarEstado"
+          /><br /><br />
+          <select id="funcionesLocales">
+            <option value="funcionesLocal">Funciones</option>
+            <option value="reservas">1) Reservas</option>
+            <option value="cupoMaximo">2) Modificar cupo máximo</option>
+            <option value="informacionEstadisticaLocal">
+              3) Información estadistica
+            </option>
+          </select>
+          <input type="button" value="Ir" id="btnSelectFuncionesLocales" />
+          <br /><br />
+          <input type="button" value="Cerrar sesión" id="btnCerrarSesionLocal" />
+        </fieldset>
+      </div>
+  
+      <!--FUNCION RESERVAS (LOCAL)-->
+      <div id="reservasLocal">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Reservas</h2>
+            <h3>Reservas pendientes</h3>
+            <label for="buscadorReservaPendiente"
+              >Buscar reserva por nombre:</label
+            >
+            <input
+              type="text"
+              id="buscadorReservaPendiente"
+            />
+            <br /><br />
+            <input type="button" value="Buscar" id="btnBuscarReservaPendiente" />
+            <br/> 
+            <p id="parrafoReservasPendientes"></p>
+            <h4>Listado de reservas pendientes</h4>
+            <span id="radioListadoReservasPendientes"></span>
+            <input type="button" id="btnFinalizarReserva" value="Finalizar reserva" />
+            <h3>Reservas finalizadas</h3>
+            <ul id="listaReservasFinalizadasLocal">
+            </ul>
+            <input
+              type="button"
+              value="Volver al menú principal"
+              id="btnReservasLocalMenu"
+            />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--CUPO MAXIMO LOCAL-->
+      <div id="cupoMaximoLocal">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Modificar cupo máximo de reservas</h2>
+            <p><strong>Cupo maximo actual: </strong><span id="cupoMaximoActual"></span></p>
+            <label for="cupoMaximoNuevo"
+              ><strong>Cupo máximo nuevo: </strong>
+            </label>
+            <input
+              type="text"
+              id="cupoMaximoNuevo"
+              placeholder="Ingrese nuevo cupo"
+            />
+            <br /><br />
+            <input type="button" value="Modificar" id="modificarCupoMaximo" /><br /><br />
+            <input
+              type="button"
+              value="Volver al menú principal"
+              id="btnCupoMaximoLocalMenu"
+            />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--INFORMACIÓN ESTADISTICA LOCAL-->
+      <div id="divInformacionEstadisticaLocal">
+        <fieldset>
+          <br />
+          <h2 style="display: inline">Información Estadística</h2>
+          <h3>Porcentaje de ocupación</h3>
+          <p>Porcentaje actual: <span id="porcentajeOcupacion"></span></p>
+          <h3>Reservas realizadas por los usuarios</h3>
+          <p> Pendientes:<span id="reservasPendientesInfoLocal"></span></p>
+          <p> Finalizadas:<span id="reservasFinalizadasInfoLocal"></span></p>
+          <h3>Promedio de calificación del propio local: </h3>
+          <p id="promedioCalificacionLocal"></p>
+          <span id="promedioCalificacionLocalRed" style="color: red;"></span>
+          <h3>Promedio de calificación de todos los locales: </h3>
+          <ul id="promedioCalificacionOtros"></ul>
+          <input
+            type="button"
+            value="Volver al menú principal"
+            id="btnInformacionEstadisticaMenu"
+          />
+        </fieldset>
+      </div>
+  
+      <!--INGRESO USUARIO-->
+      <div id="ingresoPersonas">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Ingreso Usuario:</h2>
+            <br />
+            <label for="txtUsernamePersona"
+              ><strong>Nombre de Usuario:</strong></label
+            >
+            <input
+              type="text"
+              id="txtUsernamePersona"
+              placeholder="Ingresar nombre de usuario"
+            /><br /><br />
+  
+            <label for="txtPasswordUsernamePersona">
+              <strong>Contraseña:</strong></label
+            >
+            <input
+              type="password"
+              id="txtPasswordUsernamePersona"
+              placeholder="Ingresar contraseña"
+            />
+  
+            <br /><br />
+            <strong>No tiene usuario?</strong>
+            <u>Haga click a continuación para registrarse:</u>
+            <input type="button" id="btnLoginToRegister" value="Click aquí" />
+            <p id="avisoUsuarioInexistente" style="color:red"></p>
+            <input type="button" id="loginUsername" value="Ingresar" />
+            <br /><br />
+            <input
+              type="button"
+              value="Volver a página de inicio"
+              id="btnVolverUsuario"
+            />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--REGISTRO USUARIO-->
+      <div id="registroPersona">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Registro:</h2>
+            <label for="txtName"><strong>Nombre: </strong></label>
+            <input
+              type="text"
+              id="txtName"
+              placeholder="Ingresar nombre"
+            /><br /><br />
+            <label for="txtUsernamePersonaRegister">
+              <strong>Nombre de usuario: </strong></label
+            >
+            <input
+              type="text"
+              id="txtUsernamePersonaRegister"
+              placeholder="Ingresar nombre de usuario"
+            />
+            <br /><br />
+            <label for="txtPasswordUsernameRegister"
+              ><strong>Constraseña: </strong></label
+            >
+            <input
+              type="password"
+              id="txtPasswordUsernameRegister"
+              placeholder="Ingresar Constraseña"
+            />
+            * Mínimo de 6 caracteres, al menos una mayúscula, una minúscula y un
+            número.
+            <br /><br />
+            <label for="repeatPassword"
+              ><strong>Volver a ingresar contraseña: </strong></label
+            >
+            <input
+              type="password"
+              id="repeatPassword"
+              placeholder="Volver a ingresar contraseña"
+            />
+            <p id="avisoRegistro" style="color: red"></p>
+            <input
+              type="button"
+              id="btnFinalizarRegistro"
+              value="Registrarse"
+            /><br /><br />
+            <input
+              type="button"
+              id="btnVolverRegistroPersonas"
+              value="Volver a la página de inicio"
+            />
+            <p id="usuarioCreado"></p>
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--PAGINA INICIO USUARIO-->
+      <div id="inicioUsuario">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Bienvenido <span id="tituloInicioUsuario"></span></h2>
+            <p><strong>Numero de identificación: </strong><span id="numeroIdentificacionusuario"></span></p>
+            <p><strong>Nombre: </strong><span id="nombreSpan"></span></p>
+            <p><strong>Usuario: </strong><span id="usuarioSpan"></span></p>
+            <select id="funcionesUsuario">
+              <option value="cartelFuncion">Funciones</option>
+              <option value="reservasUsuario">1) Solicitud de reservas</option>
+              <option value="reservasPendientesUsuario">
+                2) Reservas pendientes
+              </option>
+              <option value="cancelarReservasPendientes">
+                3) Cancelar reservas pendientes
+              </option>
+              <option value="calificarReservas">4) Calificar reservas</option>
+              <option value="informacionEstadisticaUsuario">
+                5) Información estadística
+              </option>
+            </select>
+            <input
+              type="button"
+              value="Ir"
+              id="btnSelectFuncionesUsuarios"
+            /><br /><br />
+            <input
+              type="button"
+              value="Cerrar sesión"
+              id="btnCerrarSesionUsuario"
+            />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--FUNCION RESERVAR USUARIO-->
+      <div id="funcionReservarUsuario">
+        <fieldset>
+          <form action="#" method="post">
+            <h2>Solicite una reserva</h2>
+            <h3>Restaurantes</h3>
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="primerRestaurante"            
+              class="radiosReservas"
+              />
+            <p style="display: inline" id="reserva0" class="mostrarCupos">
+            </p>
+            <br /><br />
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="segundoRestaurante"    
+              class="radiosReservas" 
+              />
+            <p style="display: inline" id="reserva1" class="mostrarCupos">
+            </p>
+            <br /><br />
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="tercerRestaurante"        
+              class="radiosReservas"
+              />
+            <p style="display: inline" id="reserva2" class="mostrarCupos">
+            </p>
+            <br />
+            <h3>Museos</h3>
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="primerMuseo"        
+              class="radiosReservas"
+              />
+            <p style="display: inline" id="reserva3" class="mostrarCupos"></p>
+            <br /><br />
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="segundoMuseo"    
+              class="radiosReservas"
+              />
+            <p style="display: inline" id="reserva4" class="mostrarCupos"></p>
+            <br />
+            <h3>Teatro</h3>
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="primerTeatro"     
+              class="radiosReservas"
+              />
+            <p style="display: inline" id="reserva5" class="mostrarCupos"></p>
+            <br /><br />
+            <input
+              type="radio"
+              name="radioReservarLocalUsuario"
+              id="segundoTeatro"     
+              class="radiosReservas"
+              />
+            <p style="display: inline" id="reserva6" class="mostrarCupos">
+            </p>
+            <br /><br /><br />
+            <strong>Seleccione cantidad de lugares a reservar: </strong>
+            <br /><br />
+            <input type="number" id="cantidadLugaresUsuario" />
+            <input type="button" value="Reservar" id="btnReservaUsuario" />
+            <p id="errorReservaUsuario" style="color:red"></p>
+            <p id="reservaAceptada"></p>
+            <input
+              type="button"
+              value="Volver al menú principal"
+              id="btnReservaUsuarioMenu"
+            /><br /><br />
+          </form>
+        </fieldset>
+      </div>
+  
+      <!--RESERVAS PENDIENTES USUARIO-->
+      <div id="divReservasPendientesUsuario">
+        <fieldset>
+          <h2>Reservas pendientes</h2>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Foto del local</th>
+                <th>Nombre</th>
+                <th>Cantidad de reservas</th>
+              </tr>
+            </thead> 
+            <tbody id="tablaMostrarPendientes">
+            </tbody>  
+          </table> <br>
+          <input
+            type="button"
+            value="Volver al menú principal"
+            id="btnReservasPendientesUsuarioMenu"
+          /><br /><br />
+        </fieldset>
+      </div>
+      
+  
+      <!--FUNCION CANCELAR RESERVAS USUARIO-->
+      <div id="cancelarReservaUsuario">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Cancelar reserva pendiente</h2>
+            <h3>Listado de reservas pendientes</h3>
+            <p id="sinReservasPendientes" style="color:red"></p>
+            <span id="radioCancelarReservas"></span>
+            <input
+              type="button"
+              value="Confirmar"
+              id="btnCancelarReserva"
+            /><br /><br />
+            <input
+              type="button"
+              value="Volver al menú principal"
+              id="btnCancelarUsuarioMenu"
+            />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--FUNCION PUNTUAR RESERVAS USUARIO-->
+      <div id="puntuarReservaUsuario">
+        <form action="#" method="post">
+          <fieldset>
+            <h2>Califique sus reservas</h2>
+            <p id="sinReservasFinalizadas" style="color: red;"></p>
+            <span id="radioReservasAPuntuar"></span>
+            <select id="notaPuntajeUsuario">
+              <option value="cartel">Califique su reserva</option>
+              <option value="uno">1</option>
+              <option value="dos">2</option>
+              <option value="tres">3</option>
+              <option value="cuatro">4</option>
+              <option value="cinco">5</option>
+            </select>
+            <p id="mensajeDeCalificacion"></p>
+            <input
+              type="button"
+              id="btnCalificar"
+              value="Calificar"
+            /><br /><br />
+            <input
+              type="button"
+              value="Volver al menú principal"
+              id="btnPuntajeReservaUsuarioMenu"
+            />
+          </fieldset>
+        </form>
+      </div>
+  
+      <!--INFORMACION ESTADISTICA USUARIO-->
+      <div id="divInformacionEstadisticaUsuario">
+        <fieldset>
+          <br />
+          <h2 style="display: inline">Información estadística</h2>
+          <h3>Informacion de reservas</h3>
+          <h4>Locales reservados</h4>
+          <ul id="listaDatosReservas">
+          </ul>
+          <p id="mensajeErrorInfoUsuario" style="color: red"></p>
+          <h3>Mi local Favorito</h3>
+          <p><strong> Local/es con mas reservas: </strong><span id="localConMasReservas"></span></p>
+          <p id="mensajeSinReservas" style="color: red"></p>
+          <input
+            type="button"
+            value="Volver al menú principal"
+            id="btnInformacionEstadisticaUsuarioMenu"
+          />
+        </fieldset>
+      </div>
+  </body>
+  </html>
+    
